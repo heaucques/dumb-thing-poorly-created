@@ -22,8 +22,8 @@ public class RubiksCube {
          */
         RubiksCube cube = new RubiksCube(3);
 
-        System.out.println(cube.orderOf("drul"));
-//        System.out.println(cube.trackWithFormat("ru", 4));
+        System.out.println(cube.orderOf("rdb"));
+//        System.out.println(cube.trackWithFormat("dl", 26));
     }
 
     public RubiksCube(int type) {
@@ -71,7 +71,7 @@ public class RubiksCube {
         ArrayList result = new ArrayList();
         int pos = start, old_pos = start, n = turns.length(), i = 0;
 
-        int count = 1;
+//        int count = 1;
         while (true) {
             String turnString = Character.toString(turns.charAt(i));
             pos = turn(turnString, pos);
@@ -82,8 +82,8 @@ public class RubiksCube {
             if (pos == start) {
                 break;
             }
-            System.out.println(count);
-            count++;
+//            System.out.println(count);
+//            count++;
         }
         return result;
     }
@@ -99,6 +99,7 @@ public class RubiksCube {
             String turnString = Character.toString(turns.charAt(i));
             pos = turn(turnString, pos);
             result.add(turnString.toUpperCase() + " : " + old_pos + " → " + pos);
+//            System.out.println(turnString + ": " + old_pos + ", " + pos);
             old_pos = pos;
             i = (i + 1) % n;
             if (pos == start) {
@@ -208,10 +209,10 @@ public class RubiksCube {
             udderly.put(u, r, new int[]{37, 38, 52, 40, 41, 49, 43, 44, 46});
             udderly.put(u, d, new int[]{37, 38, 39, 40, 41, 42, 43, 44, 45});
             udderly.put(u, u, new int[]{39, 42, 45, 38, 41, 44, 37, 40, 43});
-            udderly.put(u, b, new int[]{16, 13, 1040, 41, 42, 43, 44, 45});
+            udderly.put(u, b, new int[]{16, 13, 10, 40, 41, 42, 43, 44, 45});
 
             udderly.put(b, f, new int[]{46, 47, 48, 49, 50, 51, 52, 53, 54});
-            udderly.put(b, l, new int[]{46, 47, 43, 49, 50, 40, 52, 43, 37});
+            udderly.put(b, l, new int[]{46, 47, 43, 49, 50, 40, 52, 53, 37});
             udderly.put(b, r, new int[]{36, 47, 48, 33, 50, 51, 30, 53, 54});
             udderly.put(b, d, new int[]{46, 47, 48, 49, 50, 51, 16, 17, 18});
             udderly.put(b, u, new int[]{19, 20, 21, 49, 50, 51, 52, 53, 54});
