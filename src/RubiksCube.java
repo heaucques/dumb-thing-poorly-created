@@ -71,7 +71,6 @@ public class RubiksCube {
         ArrayList result = new ArrayList();
         int pos = start, old_pos = start, n = turns.length(), i = 0;
 
-//        int count = 1;
         while (true) {
             String turnString = Character.toString(turns.charAt(i));
             pos = turn(turnString, pos);
@@ -82,8 +81,6 @@ public class RubiksCube {
             if (pos == start) {
                 break;
             }
-//            System.out.println(count);
-//            count++;
         }
         return result;
     }
@@ -99,7 +96,6 @@ public class RubiksCube {
             String turnString = Character.toString(turns.charAt(i));
             pos = turn(turnString, pos);
             result.add(turnString.toUpperCase() + " : " + old_pos + " → " + pos);
-//            System.out.println(turnString + ": " + old_pos + ", " + pos);
             old_pos = pos;
             i = (i + 1) % n;
             if (pos == start) {
