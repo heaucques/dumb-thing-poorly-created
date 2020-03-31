@@ -19,4 +19,4 @@ return
 ```
 
 ## bugs
-bugs annoyent please fix if can do
+bugs annoyent please informent if can do or if do can then fix epicques
