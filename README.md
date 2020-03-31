@@ -2,6 +2,8 @@
 asdf;j
 dumb
 
+oh also i didn't create the bihashmap i googled and someone suggested this to someone else in the stackoverflow whereabouts so i OBTAINED via copy paste although desafortunadamente i forgot where i got it from
+
 ## weird testing methods
 for testing i usually use [this website's interactive rubik's cube](https://ruwix.com/online-rubiks-cube-solver-program/) primarily because it's hyperimmediate meanwhile ALL the other ones 
 
