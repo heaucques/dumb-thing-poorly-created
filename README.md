@@ -1,7 +1,7 @@
 # dumb-thing-poorly-created
 asdf;j
 dumb
-
+## credit thing
 oh also i didn't create the bihashmap i googled and someone suggested this to someone else in the stackoverflow whereabouts so i OBTAINED via copy paste although desafortunadamente i forgot where i got it from
 
 ## weird testing methods
