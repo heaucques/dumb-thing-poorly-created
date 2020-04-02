@@ -22,8 +22,8 @@ public class RubiksCube {
          */
         RubiksCube cube = new RubiksCube(3);
 
-        System.out.println(cube.orderOf("rdb"));
-//        System.out.println(cube.trackWithFormat("dl", 26));
+        System.out.println(cube.orderOf("ldfbur"));
+//        System.out.println(cube.trackWithFormat("rf", 9));
     }
 
     public RubiksCube(int type) {
@@ -141,7 +141,7 @@ public class RubiksCube {
             udderly.put(l, u, new int[]{21, 22, 7, 8});
             udderly.put(l, b, new int[]{15, 6, 16, 8});
 
-            udderly.put(r, f, new int[]{14, 10, 13, 9});
+            udderly.put(r, f, new int[]{14, 10, 13, 12});
             udderly.put(r, l, new int[]{9, 10, 11, 12});
             udderly.put(r, r, new int[]{10, 12, 9, 11});
             udderly.put(r, d, new int[]{9, 10, 23, 24});
