@@ -1,15 +1,9 @@
 import java.util.ArrayList;
 
 public class RubiksCube {
-    int LENGTH;
-    private int[] f = new int[LENGTH];
-    private int[] l = new int[LENGTH];
-    private int[] r = new int[LENGTH];
-    private int[] d = new int[LENGTH];
-    private int[] u = new int[LENGTH];
-    private int[] b = new int[LENGTH];
+    private int LENGTH, type;
+    private int[] f, l, r, d, u, b;
     private BiHashMap<int[],int[],int[]> udderly = new BiHashMap<int[],int[],int[]>();
-    private int type;
 
     public static void main(String[] args) {
         /** check the slides for the starting position (current build only has 3x3x3 supported)
@@ -20,22 +14,14 @@ public class RubiksCube {
          *
          * currently all this program does is spit back the turns it takes to return to it's starting position
          */
-        RubiksCube cube = new RubiksCube(3);
+        RubiksCube cube = new RubiksCube(2);
 
         System.out.println(cube.orderOf("ldfbur"));
 //        System.out.println(cube.trackWithFormat("rf", 9));
     }
 
     public RubiksCube(int type) {
-        if (type <= 2) {
-            this.twobytwo();
-            LENGTH = 4;
-            this.type = 2;
-        } else {
-            this.threebythree();
-            LENGTH = 9;
-            this.type = 3;
-        }
+        if (type <= 2) this.twobytwo(); else this.threebythree();
         initializeBiHashMap();
     }
 
@@ -69,18 +55,13 @@ public class RubiksCube {
 
     private ArrayList track(String turns, int start) {
         ArrayList result = new ArrayList();
-        int pos = start, old_pos = start, n = turns.length(), i = 0;
-
+        int pos = start, n = turns.length(), i = 0;
         while (true) {
             String turnString = Character.toString(turns.charAt(i));
             pos = turn(turnString, pos);
-            if (i == 0) {
-                result.add(pos); // old standard boring format but is necessary for finding order
-            }
+            if (i == 0) result.add(pos); // old standard boring format but is necessary for finding order
             i = (i + 1) % n;
-            if (pos == start) {
-                break;
-            }
+            if (pos == start) break;
         }
         return result;
     }
@@ -88,7 +69,7 @@ public class RubiksCube {
     private ArrayList trackWithFormat(String turns, int start) {
         /** THIS IS FOR VIEWING PURPOSES WHEN DISPLAYING WHAT THE track FUNCTION DOES ONLY
          * THIS IS NOT FOR IMPLEMENTATION WITHIN THE orderOf FUNCTION
-         * THIS IS ONLY FOR IMPROVING READABILITY OF EACH ALTERATION OF WHAT EACH SEPARATE MOVE UPON A SPECIFIC PIECE
+         * THIS IS ONLY FOR IMPROVING READABILITY OF EACH ALTERATION OF WHAT EACH SEPARATE MOVE DOES UPON A SPECIFIC PIECE
          */
         ArrayList result = new ArrayList();
         int pos = start, old_pos = start, n = turns.length(), i = 0;
@@ -98,9 +79,7 @@ public class RubiksCube {
             result.add(turnString.toUpperCase() + " : " + old_pos + " → " + pos);
             old_pos = pos;
             i = (i + 1) % n;
-            if (pos == start) {
-                break;
-            }
+            if (pos == start) break;
         }
         return result;
     }
@@ -117,15 +96,14 @@ public class RubiksCube {
     }
 
     private int indexOfString(String string, char character) {
-        for (int i = 0, n = string.length(); i < n; i++) {
-            if (character == string.charAt(i)) {
-                return i;
-            }
-        }
+        for (int i = 0, n = string.length(); i < n; i++) if (character == string.charAt(i)) return i;
         return -1;
     }
 
     private void initializeBiHashMap() {
+            /*
+            while hardcoding is the least efficient, it's ironically the most readable
+             */
         if (type == 2) {
             udderly.put(f, f, new int[]{2, 4, 1, 3});
             udderly.put(f, l, new int[]{13, 2, 15, 4});
@@ -169,9 +147,6 @@ public class RubiksCube {
             udderly.put(b, u, new int[]{9, 10, 23, 24});
             udderly.put(b, b, new int[]{22, 24, 21, 23});
         } else {
-            /*
-            while hardcoding is the least efficient, it's ironically the most readable
-             */
             udderly.put(l, f, new int[]{10, 11, 45, 13, 14, 44, 16, 17, 43});
             udderly.put(l, l, new int[]{12, 15, 18, 11, 14, 17, 10, 13, 16});
             udderly.put(l, r, new int[]{10, 11, 12, 13, 14, 15, 16, 17, 18});
@@ -216,6 +191,8 @@ public class RubiksCube {
         }
     }
     private void twobytwo() {
+        LENGTH = 4;
+        type = 2;
         f = new int[]{1, 2, 3, 4};
         l = new int[]{5, 6, 7, 8};
         r = new int[]{9, 10, 11, 12};
@@ -225,6 +202,8 @@ public class RubiksCube {
     }
 
     private void threebythree() {
+        LENGTH = 9;
+        type = 3;
         f = new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9};
         l = new int[]{10, 11, 12, 13, 14, 15, 16, 17, 18};
         r = new int[]{19, 20, 21, 22, 23, 24, 25, 26, 27};
