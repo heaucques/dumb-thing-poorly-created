@@ -14,10 +14,10 @@ public class RubiksCube {
          *
          * currently all this program does is spit back the turns it takes to return to it's starting position
          */
-        RubiksCube cube = new RubiksCube(2);
+        RubiksCube cube = new RubiksCube(3);
 
-        System.out.println(cube.orderOf("ldfbur"));
-//        System.out.println(cube.trackWithFormat("rf", 9));
+        System.out.println(cube.orderOf("dbf"));
+        System.out.println(cube.trackWithFormat("lfr", 8));
     }
 
     public RubiksCube(int type) {
@@ -32,6 +32,11 @@ public class RubiksCube {
         for (int i = 1; i <= LENGTH * 6; i++) {
             ArrayList sheep = track(turns, i);
             ovinus_real[i - 1] = sheep.size();
+        }
+        int count = 1;
+        for (int n : ovinus_real) {
+            System.out.println(n + ", " + count);
+            count++;
         }
         return lcm(ovinus_real);
     }
@@ -61,7 +66,7 @@ public class RubiksCube {
             pos = turn(turnString, pos);
             if (i == 0) result.add(pos); // old standard boring format but is necessary for finding order
             i = (i + 1) % n;
-            if (pos == start) break;
+            if (pos == start && i == 0) break;
         }
         return result;
     }
@@ -73,13 +78,14 @@ public class RubiksCube {
          */
         ArrayList result = new ArrayList();
         int pos = start, old_pos = start, n = turns.length(), i = 0;
+        turns.toLowerCase();
         while (true) {
             String turnString = Character.toString(turns.charAt(i));
             pos = turn(turnString, pos);
             result.add(turnString.toUpperCase() + " : " + old_pos + " → " + pos);
             old_pos = pos;
             i = (i + 1) % n;
-            if (pos == start) break;
+            if (pos == start && i == 0) break;
         }
         return result;
     }
