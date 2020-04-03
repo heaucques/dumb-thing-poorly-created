@@ -33,11 +33,6 @@ public class RubiksCube {
             ArrayList sheep = track(turns, i);
             ovinus_real[i - 1] = sheep.size();
         }
-        int count = 1;
-        for (int n : ovinus_real) {
-            System.out.println(n + ", " + count);
-            count++;
-        }
         return lcm(ovinus_real);
     }
 
