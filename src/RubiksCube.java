@@ -16,8 +16,8 @@ public class RubiksCube {
          */
         RubiksCube cube = new RubiksCube(3);
 
-        System.out.println(cube.orderOf("dbf"));
-        System.out.println(cube.trackWithFormat("lfr", 8));
+        System.out.println(cube.orderOf("rufbddbbdruuul"));
+//        System.out.println(cube.trackWithFormat("RLUBF", 1));
     }
 
     public RubiksCube(int type) {
@@ -26,6 +26,8 @@ public class RubiksCube {
     }
 
     private int orderOf(String turns) {
+        /** gets order of rubik's cube subgroup given the generator "turns"
+         */
         int[] ovinus_real = new int[LENGTH * 6];
 
 //        screw micro-optimization
@@ -56,6 +58,7 @@ public class RubiksCube {
     private ArrayList track(String turns, int start) {
         ArrayList result = new ArrayList();
         int pos = start, n = turns.length(), i = 0;
+        turns = turns.toLowerCase();
         while (true) {
             String turnString = Character.toString(turns.charAt(i));
             pos = turn(turnString, pos);
@@ -67,13 +70,12 @@ public class RubiksCube {
     }
 
     private ArrayList trackWithFormat(String turns, int start) {
-        /** THIS IS FOR VIEWING PURPOSES WHEN DISPLAYING WHAT THE track FUNCTION DOES ONLY
-         * THIS IS NOT FOR IMPLEMENTATION WITHIN THE orderOf FUNCTION
-         * THIS IS ONLY FOR IMPROVING READABILITY OF EACH ALTERATION OF WHAT EACH SEPARATE MOVE DOES UPON A SPECIFIC PIECE
+        /** given generator "turns" and starting position "start" it'll track where it goes
+         * only for fancy viewing
          */
         ArrayList result = new ArrayList();
         int pos = start, old_pos = start, n = turns.length(), i = 0;
-        turns.toLowerCase();
+        turns = turns.toLowerCase();
         while (true) {
             String turnString = Character.toString(turns.charAt(i));
             pos = turn(turnString, pos);
