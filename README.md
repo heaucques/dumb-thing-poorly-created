@@ -9,7 +9,7 @@ for testing i usually use [this website's interactive rubik's cube](https://ruwi
 
 I utilize AHK to create a simple macro to iterate through all elements quickly, as I don't want to press a key 400 times
 
-## example AHK script utilized
+## example AHK script
 ```autohotkey
 ^j::
 Loop, 84
@@ -26,6 +26,10 @@ theres a cool thing called an applescript that can also simulate keypresses alth
 i still used the same [interactive rubik's cube website](https://ruwix.com/online-rubiks-cube-solver-program/) since its too convenient to not use
 
 i think there is a way to string together keypresses into a string for it to iterate through but im too lazy to find out so for now it utilizes the 1 by 1 basis; i just create a separate program to create applescript command thingies
+
+if using firefox you can replace `google chrome` with `firefox` and probably `safari` if safari
+
+if you're using edge i'll be quite confused
 
 ## example applescript
 ```applescript
@@ -90,4 +94,4 @@ end repeat
 ```
 
 ## bugs
-bugs annoyent please informent if can do or if do can then fix epicques
+🐛🐛🐛
